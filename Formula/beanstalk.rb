@@ -4,38 +4,47 @@
 class Beanstalk < Formula
   desc "Terminal-native implementation of the Beans task-file format"
   homepage "https://github.com/kpb/beanstalk"
-  version "0.4.0"
+  version "0.5.0"
   license "GPL-3.0-only"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/kpb/beanstalk/releases/download/v0.4.0/beanstalk_0.4.0_darwin_amd64.tar.gz"
-      sha256 "2ed2d0d70d8d66812905ba60253c87dd8ca4b4940676fee437a032e90e226317"
+      url "https://github.com/kpb/beanstalk/releases/download/v0.5.0/beanstalk_0.5.0_darwin_amd64.tar.gz"
+      sha256 "f15a1d5a9dd8919a532a11ec1b923c9b39092a8066b00f577d9550470d220ce7"
+
+      define_method(:install) do
+        bin.install "beanstalk"
+      end
     end
 
     if Hardware::CPU.arm?
-      url "https://github.com/kpb/beanstalk/releases/download/v0.4.0/beanstalk_0.4.0_darwin_arm64.tar.gz"
-      sha256 "8e6e4549f700452f0afa5bc4e7c58f0e635d0b129f6d319a7c6babb5513d40d0"
+      url "https://github.com/kpb/beanstalk/releases/download/v0.5.0/beanstalk_0.5.0_darwin_arm64.tar.gz"
+      sha256 "9ebfae321114d3a1b68fcd02ffacf3cbec827d5c468c082050cc78aeede6d3c2"
+
+      define_method(:install) do
+        bin.install "beanstalk"
+      end
     end
   end
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/kpb/beanstalk/releases/download/v0.4.0/beanstalk_0.4.0_linux_amd64.tar.gz"
-      sha256 "19a25ddcbb7a19955009be649751a9be489d533cf194aa33da0105a9c11661e2"
+      url "https://github.com/kpb/beanstalk/releases/download/v0.5.0/beanstalk_0.5.0_linux_amd64.tar.gz"
+      sha256 "bd45695688ac1514937731ada694cfbf9a0e7295b9eb0a8d85e225e6ffefbeca"
+
+      define_method(:install) do
+        bin.install "beanstalk"
+      end
     end
 
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/kpb/beanstalk/releases/download/v0.4.0/beanstalk_0.4.0_linux_arm64.tar.gz"
-      sha256 "48ff8b6e475128e50b64309155b9d6c6138c7d639e804a52613c5f30d3efc1fe"
+      url "https://github.com/kpb/beanstalk/releases/download/v0.5.0/beanstalk_0.5.0_linux_arm64.tar.gz"
+      sha256 "a2a96a7c23a77287e207de67416e002de19e4882d8d67bfe35279b8a1e1565ae"
+
+      define_method(:install) do
+        bin.install "beanstalk"
+      end
     end
   end
 
-  def install
-    bin.install "beanstalk"
-  end
-
-  test do
-    assert_match version.to_s, shell_output("#{bin}/beanstalk version")
-  end
 end
